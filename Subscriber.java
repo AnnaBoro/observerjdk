@@ -9,9 +9,10 @@ public class Subscriber implements Observer{
     Observable observable;
     Pressa pressa;
 
-    public Subscriber(Observable observable) {
+    public Subscriber(Observable observable, Pressa pressa) {
 
         this.observable = observable;
+        subscribeOnPressa(pressa);
         observable.addObserver(this);
     }
 
@@ -28,5 +29,13 @@ public class Subscriber implements Observer{
     public void display() {
 
         System.out.println("New edition of " + pressa.getName() + " " + pressa.getDate());
+    }
+
+    public Pressa getPressa() {
+        return pressa;
+    }
+
+    public void subscribeOnPressa(Pressa pressa) {
+        this.pressa = pressa;
     }
 }
